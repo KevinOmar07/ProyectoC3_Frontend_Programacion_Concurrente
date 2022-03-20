@@ -1,8 +1,12 @@
-container .grupo{
+:root {
+    --colorTextos: #49454567;
+}
+
+.container .grupo{
     position: relative;
     margin: 45px ;
 }
-formulario{
+.formulario{
     background-image: url("img/imagenfondo.jpeg");
 
     padding: 40px;
@@ -25,4 +29,20 @@ formulario{
 }
 .label-success {
     color: green;
+}
+
+.barra{
+    background: none;
+    color: #8c36ee;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--colorTextos);
+}
+
+.barra:focus{
+    outline: none;
+    color: #5e5d5d;
 }

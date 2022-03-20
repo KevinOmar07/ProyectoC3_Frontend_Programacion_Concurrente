@@ -136,7 +136,7 @@ class SignUp extends React.Component{
                           <div className="mb-3">
                               <label > Nombre de usuario</label>
                               <br/>
-                              <input type="text" name="username" id="username"
+                              <input className="barra" type="text" name="username" id="username"
                                      value={this.state.username}
                                      onChange={this.changeField.bind(this)}/>
                               <br/>
