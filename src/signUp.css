@@ -1,4 +1,28 @@
-*{
-    padding: 0px;
-    margin: 0px;
+container .grupo{
+    position: relative;
+    margin: 45px ;
+}
+formulario{
+    background-image: url("img/imagenfondo.jpeg");
+
+    padding: 40px;
+    background-position: center;
+    box-shadow: 0 0 6px 0 rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+}
+
+.titulo{
+    font-family: 'Strong';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 43px;
+    line-height: 51px;
+
+    color: #FFFFFF;
+}
+.label-error {
+    color: red;
+}
+.label-success {
+    color: green;
 }
