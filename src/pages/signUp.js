@@ -2,7 +2,7 @@ import React from "react";
 import update from 'immutability-helper';
 //import axios from "axios";
 import { withRouter } from "react-router-dom";
-import fondo from "../img/imagenfondo.jpeg"
+import fondo from "../img/fondo.jpg"
 import axios from "axios";
 import data from "bootstrap/js/src/dom/data";
 
@@ -127,7 +127,7 @@ class SignUp extends React.Component{
 
     render() {
         return(
-          <React.Fragment>
+          <>
               <div>
                   <img src={fondo} className="img-fluid" alt="formulario"></img>
                   <form className="position-absolute top-50 start-50 translate-middle">
@@ -169,7 +169,7 @@ class SignUp extends React.Component{
                       </div>
                   </form>
               </div >
-          </React.Fragment>
+          </>
         );
     }
 }

@@ -13,7 +13,7 @@ class SignIn extends React.Component{
     render() {
         return(
             <>
-                <h1>Aqui ira el inicio de sesion</h1>
+                <h1>Aqui ira el Inicio de SESION</h1>
                 <button type="button" onClick={this.signUp.bind(this)}>iniciar</button>
             </>
         );

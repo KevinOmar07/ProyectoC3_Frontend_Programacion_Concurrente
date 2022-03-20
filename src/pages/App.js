@@ -3,6 +3,9 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import SignIn from "./signIn";
 import SignUp from "./signUp";
 import HomePerfile from "./homePerfile";
+import "../signIn.css"
+import "../signUp.css"
+import "../perfile.css"
 
 class App extends React.Component{
     constructor(props) {

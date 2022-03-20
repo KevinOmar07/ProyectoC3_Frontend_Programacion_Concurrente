@@ -21,11 +21,18 @@ module.exports = {
             },
             {
                 test: /\.css$/i,
-                use: ["css-loader"],
+                use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
-                type: "asset",
+                test: /\.(png|jpe?g|gif)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'imgs/[name].[ext]',
+                        },
+                    },
+                ],
             },
         ]
     }
