@@ -4,6 +4,10 @@
     border-radius: 17px;
 
 }
+.icon-user{
+    width: 35px;
+    height: 35px;
+}
 .container label{
     font-family: 'Roboto';
     font-style: normal;
@@ -31,8 +35,11 @@
 .bi{
     vertical-align: -0.200em;
 }
-.conten-file{
-    width: 200px;
+.content-file div{
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #5e5d5d;
+    outline: none;
 }
 .file{
     z-index: 3;

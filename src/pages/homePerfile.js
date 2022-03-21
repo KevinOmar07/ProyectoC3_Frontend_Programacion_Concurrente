@@ -3,6 +3,7 @@ import React from "react";
 import {withRouter} from "react-router-dom";
 import update from "immutability-helper";
 import '/src/perfile.css'
+import user from '../img/user.png'
 
 class HomePerfile extends React.Component{
 
@@ -31,6 +32,7 @@ class HomePerfile extends React.Component{
                     <div>
                         <form className="d-flex justify-content-end me-2 col-lg-auto mb-lg-0 mb-lg-3 p-2 bd-highlight">
                             <input className="form-buscar form-control me-2" type="search" placeholder="buscar" aria-label="Search"/>
+                            <img src={user} alt="cargando imagen..." className="icon-user"/>
                             <label className="container label ">nombre-usario</label>
                         </form>
                     </div>
@@ -88,6 +90,12 @@ class HomePerfile extends React.Component{
                         </li>
                     </ul>
                     <hr/>
+                </div>
+                <div className="content-file position-absolute top-50 start-50">
+                    <div className="row justify-content-start">
+                        <input type="file" className="form-control col-4 col-sm-3" multiple/>
+                        <button className="btn btn-outline-secondary col-4 col-sm-3" type="button">Subir</button>
+                    </div>
                 </div>
             </>
         );
