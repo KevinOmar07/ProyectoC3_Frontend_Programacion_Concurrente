@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import fondo from "../img/fondo.jpg"
 import axios from "axios";
 import data from "bootstrap/js/src/dom/data";
+import icon from "../img/icon-user.png";
 
 class SignUp extends React.Component{
     constructor() {
@@ -128,28 +129,23 @@ class SignUp extends React.Component{
     render() {
         return(
           <>
-              <div>
-                  <img src={fondo} className="img-fluid" alt="formulario"></img>
-                  <form className="position-absolute top-50 start-50 translate-middle">
-                      <h1 className="titulo"> REGISTRARSE</h1>
-                      <div className="grupo">
+              <div className="fondo position-relative">
+                  <img src={fondo} className="img-fluid " alt="Cargando imagen.."/>
+                  <form className="box position-absolute top-50 start-50 translate-middle">
+                      <img src={icon} alt="icono usuario top-50"/>
+                      <h1> REGISTRARSE</h1>
+                      <div className="mb-3">
+                          <label > Nombre de usuario</label><br/>
+                          <input type="text" name="username" id="username"
+                                 value={this.state.username}
+                                 onChange={this.changeField.bind(this)}/><br/>
                           <div className="mb-3">
-                              <label > Nombre de usuario</label>
-                              <br/>
-                              <input className="barra" type="text" name="username" id="username"
-                                     value={this.state.username}
-                                     onChange={this.changeField.bind(this)}/>
-                              <br/>
-                          </div>
-                          <div className="mb-3">
-                              <label > Contraseña</label>
-                              <br/>
+                              <label > Contraseña</label><br/>
                               <input type="password" name="password" id="password"
                                      value={this.state.password}
                                      onChange={this.changeField.bind(this)}
                                      onBlur={this.validarPass.bind(this)}
-                              />
-                              <br/>
+                              /><br/>
                               <label className='label-error' ref={self=> this.password = self}></label>
                               <label id='labelSuccesPass' ref={self=> this.passwordSuccess = self}></label>
                           </div>
@@ -162,7 +158,7 @@ class SignUp extends React.Component{
                               />
                               <br/>
                           </div>
-                          <button type="submit" value="Enviar" className="btn bg-primary" onClick={this.validarCampos.bind(this)}>
+                          <button type="submit" value="Enviar" className="btn btn-primary d-grid" onClick={this.validarCampos.bind(this)}>
                               Registrar
                           </button>
                           <div className='{label-error}' ref={self => this.messageError = self}></div>
