@@ -1,3 +1,39 @@
-:root {
-    --colorTextos: EEEEEE;
+.form-buscar{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+
+}
+.container label{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+    text-align: center;
+
+    color: #000000;
+}
+.menu{
+    background: #939393;
+    font-family: 'Ropa Sans';
+    font-style: normal;
+    font-weight: 100;
+    font-size: 15px;
+    line-height: 32px;
+    width: 200px;
+    height: 100vh;
+    top: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+.bi{
+    vertical-align: -0.200em;
+}
+.conten-file{
+    width: 200px;
+}
+.file{
+    z-index: 3;
 }

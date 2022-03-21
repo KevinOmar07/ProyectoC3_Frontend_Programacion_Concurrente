@@ -1,13 +1,11 @@
 import React from "react";
 import {withRouter} from "react-router-dom"
-import fondo from '../img/fondo.jpg'
 import icon from '../img/icon-user.png'
-import {BrowserRouter as Router, Route} from "react-router-dom";
 import '/src/signIn.css'
 import update from "immutability-helper";
 
 class SignIn extends React.Component{
-    constructor(props) {
+    constructor() {
         super();
         this.state = {
             username:'',
