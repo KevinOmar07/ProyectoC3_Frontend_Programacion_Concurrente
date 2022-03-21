@@ -38,8 +38,7 @@ class SignIn extends React.Component{
     render() {
         return(
             <>
-                <div className="fondo position-relative">
-                    <img src={fondo} className="img-fluid " alt="Cargando imagen.."/>
+                <div className="fondo-container">
                     <form className="box position-absolute top-50 start-50 translate-middle">
                         <img src={icon} alt="icono usuario top-50"/>
                         <h1>Iniciar sesión</h1><br/>

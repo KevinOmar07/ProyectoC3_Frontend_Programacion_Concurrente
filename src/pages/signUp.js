@@ -1,6 +1,5 @@
 import React from "react";
 import update from 'immutability-helper';
-//import axios from "axios";
 import { withRouter } from "react-router-dom";
 import fondo from "../img/fondo.jpg"
 import axios from "axios";
@@ -129,8 +128,7 @@ class SignUp extends React.Component{
     render() {
         return(
           <>
-              <div className="fondo position-relative">
-                  <img src={fondo} className="img-fluid " alt="Cargando imagen.."/>
+              <div className="fondo-container">
                   <form className="box position-absolute top-50 start-50 translate-middle">
                       <img src={icon} alt="icono usuario top-50"/>
                       <h1> REGISTRARSE</h1>

@@ -88,3 +88,14 @@
     outline: none;
     color: #5e5d5d;
 }
+
+.fondo-container {
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://res.cloudinary.com/drmqmmxnh/image/upload/v1647811151/fondo_pxlble.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-size: cover;
+}
