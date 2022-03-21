@@ -124,6 +124,9 @@ class SignUp extends React.Component{
         }
 
     }
+    perfil(){
+        this.props.history.push('/perfile')
+    }
 
     render() {
         return(
@@ -131,7 +134,7 @@ class SignUp extends React.Component{
               <div className="fondo-container">
                   <form className="box position-absolute top-50 start-50 translate-middle">
                       <img src={icon} alt="icono usuario top-50"/>
-                      <h1> REGISTRARSE</h1>
+                      <h1> Registrarse </h1>
                       <div className="mb-3">
                           <label > Nombre de usuario</label><br/>
                           <input type="text" name="username" id="username"
@@ -156,7 +159,7 @@ class SignUp extends React.Component{
                               />
                               <br/>
                           </div>
-                          <button type="submit" value="Enviar" className="btn btn-primary d-grid" onClick={this.validarCampos.bind(this)}>
+                          <button type="submit" value="Enviar" className="btn btn-primary d-grid" onClick={this.perfil.bind(this)}>
                               Registrar
                           </button>
                           <div className='{label-error}' ref={self => this.messageError = self}></div>

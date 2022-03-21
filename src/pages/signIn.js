@@ -34,6 +34,9 @@ class SignIn extends React.Component{
     signUp(){
         this.props.history.push('/signUp');
     }
+    perfil(){
+        this.props.history.push('/perfile')
+    }
 
     render() {
         return(
@@ -50,7 +53,7 @@ class SignIn extends React.Component{
                             <label>Contraseña</label><br/>
                             <input type="password" id="password" required/>
                         </div>
-                        <button type="submit" className="btn btn-primary d-grid">Iniciar sesión</button>
+                        <button type="submit" className="btn btn-primary d-grid" onClick={this.perfil.bind(this)}>Iniciar sesión</button>
                         <p>¿No tienes cuenta? <a className="link-primary" onClick={this.signUp.bind(this)}>Registrarme</a></p>
                     </form>
                 </div>
