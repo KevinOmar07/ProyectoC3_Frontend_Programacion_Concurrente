@@ -1,5 +1,5 @@
 import React from "react";
-//import axios from "axios";
+import axios from "axios";
 import {withRouter} from "react-router-dom";
 import update from "immutability-helper";
 import '/src/perfile.css'
@@ -23,6 +23,30 @@ class HomePerfile extends React.Component{
         this.setState(update(this.state,{
             [field] : {$set : value}
         }))
+    }
+
+    enviar_fotos(){
+        const formData = new FormData();
+        const inputFile = document.getElementById("file");
+
+        for (const file of inputFile.files) {
+            formData.append("files", file, file.name);
+        }
+
+        axios.post('http://localhost:3001/set_image2?id=110',
+            formData
+        ).then(data => {
+
+            if(data.data === "guardado"){
+                alert("Las imagenes se subieron correctamente");
+
+            }else{
+                alert("No se pudieron subir las imagenes")
+                console.log(data)
+            }
+        }).catch(e => {
+            alert("No se pudo conectar al servidor")
+        });
     }
 
     render() {
@@ -93,8 +117,8 @@ class HomePerfile extends React.Component{
                 </div>
                 <div className="content-file position-absolute top-50 start-50">
                     <div className="row justify-content-start">
-                        <input type="file" className="form-control col-4 col-sm-3" multiple/>
-                        <button className="btn btn-outline-secondary col-4 col-sm-3" type="button">Subir</button>
+                        <input type="file" id="file" className="form-control col-4 col-sm-3" multiple/>
+                        <button onClick={this.enviar_fotos.bind(this)} className="btn btn-outline-secondary col-4 col-sm-3" type="button">Subir</button>
                     </div>
                 </div>
             </>
