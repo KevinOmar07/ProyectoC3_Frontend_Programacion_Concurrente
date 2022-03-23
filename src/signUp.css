@@ -6,10 +6,10 @@
     position: relative;
     margin: 45px ;
 }
-.box{
+.box2{
     background-color: transparent;
 }
-.box img{
+.box2 img{
     align-items: center;
     display: block;
     margin: auto;
@@ -17,7 +17,7 @@
     height: 50px;
 
 }
-.box h1{
+.box2 h1{
     font-family: 'Strong';
     font-style: normal;
     font-weight: 400;
@@ -26,7 +26,7 @@
 
     color: #FFFFFF;
 }
-.box label{
+.box2 label{
     font-family: 'Ruda';
     font-style: normal;
     font-size: 20px;
@@ -36,7 +36,7 @@
     transition: 0.5s ease all;
     pointer-events: none;
 }
-.box input{
+.box2 input{
     background: none;
     border-color: #A9B6E3;
     font-family: Ruda;
@@ -48,6 +48,17 @@
     outline: none;
     width: 100%;
     border-style: none none solid none;
+}
+.box2 button{
+    background: #A9B6E3;
+    font-size: 15px;
+    border-radius: 10px;
+    width: 100%;
+    height: 30px;
+    margin: 10px auto;
+    display: block;
+    outline: none;
+    border-color: transparent;
 }
 .fondo{
     background-position: center;
@@ -93,7 +104,7 @@
 .fondo-container {
     width: 100%;
     height: 100vh;
-    background-image: url("https://res.cloudinary.com/drmqmmxnh/image/upload/v1647833971/7ddcc4d4-0550-45e9-a5bc-ba16c35a8bc7_gukkiz.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-image: url("https://res.cloudinary.com/drmqmmxnh/image/upload/v1647998873/Picsart_22-03-22_19-23-53-592_ah4iph.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
     display: flex;
     justify-content: center;
     align-items: center;

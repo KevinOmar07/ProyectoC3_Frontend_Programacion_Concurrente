@@ -54,8 +54,13 @@ class HomePerfile extends React.Component{
             <>
                 <header className="position-absolute p-3 col-12 d-flex flex-row-reverse bd-highlight">
                     <div>
+                        <div className="content-file me-2 position-absolute top-50 start-50 translate-middle">
+                            <div className="row justify-content-start ">
+                                <input type="file" id="file" className="form-control col-4 col-sm-3" multiple/>
+                                <button onClick={this.enviar_fotos.bind(this)} className="bton-file btn btn-outline-secondary col-4 col-sm-3" type="button">Subir</button>
+                            </div>
+                        </div>
                         <form className="d-flex justify-content-end me-2 col-lg-auto mb-lg-0 mb-lg-3 p-2 bd-highlight">
-                            <input className="form-buscar form-control me-2" type="search" placeholder="buscar" aria-label="Search"/>
                             <img src={user} alt="cargando imagen..." className="icon-user"/>
                             <label className="container label ">nombre-usario</label>
                         </form>
@@ -86,17 +91,6 @@ class HomePerfile extends React.Component{
                         <li>
                             <a href="#" className="nav-link text-white">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                     className="bi me-2 bi-trash" viewBox="0 0 16 16">
-                                    <path
-                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                    <path
-                                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                                </svg>
-                                Eliminar</a>
-                        </li>
-                        <li>
-                            <a href="#" className="nav-link text-white">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                      className="bi me-2 bi-box-arrow-left" viewBox="0 0 16 16">
                                     <path d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
                                     <path d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
@@ -115,12 +109,7 @@ class HomePerfile extends React.Component{
                     </ul>
                     <hr/>
                 </div>
-                <div className="content-file position-absolute top-50 start-50">
-                    <div className="row justify-content-start">
-                        <input type="file" id="file" className="form-control col-4 col-sm-3" multiple/>
-                        <button onClick={this.enviar_fotos.bind(this)} className="btn btn-outline-secondary col-4 col-sm-3" type="button">Subir</button>
-                    </div>
-                </div>
+
             </>
         );
     }

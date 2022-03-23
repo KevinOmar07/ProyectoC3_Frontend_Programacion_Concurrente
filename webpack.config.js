@@ -18,7 +18,8 @@ module.exports = {
                         presets: ['@babel/preset-env','@babel/preset-react'],
                         plugins: [
                             "jsx-control-statements",
-                            "@babel/transform-runtime"
+                            "@babel/transform-runtime",
+                            "react-hot-loader/babel"
                         ]
                     }
                 }

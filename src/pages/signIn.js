@@ -44,14 +44,14 @@ class SignIn extends React.Component{
                         <img src={icon} alt="icono usuario top-50"/>
                         <h1>Iniciar sesión</h1><br/>
                         <div className="mb-3">
-                            <label>Usuario</label><br/>
+                            <label >Usuario</label><br/>
                             <input type="text" id="user" required/>
                         </div>
                         <div className="mb-3">
                             <label>Contraseña</label><br/>
                             <input type="password" id="password" required/>
                         </div>
-                        <button type="submit" className="btn btn-primary d-grid" onClick={this.perfil.bind(this)}>Iniciar sesión</button>
+                        <button type="button" className="btn btn-primary d-grid" onClick={this.perfil.bind(this)}>Iniciar sesión</button>
                         <p>¿No tienes cuenta? <a className="link-primary" onClick={this.signUp.bind(this)}>Registrarme</a></p>
                     </form>
                 </div>

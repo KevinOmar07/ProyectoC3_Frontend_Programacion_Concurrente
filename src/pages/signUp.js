@@ -1,14 +1,12 @@
 import React from "react";
 import update from 'immutability-helper';
 import { withRouter } from "react-router-dom";
-import fondo from "../img/fondo.jpg"
 import axios from "axios";
-import data from "bootstrap/js/src/dom/data";
 import icon from "../img/icon-user.png";
 
 class SignUp extends React.Component{
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             username: '',
             password: '',
@@ -37,11 +35,12 @@ class SignUp extends React.Component{
                 password: this.state.password,
                 confpassword: this.state.confpassword
             }
-            axios.post('http://localhost:8000/signUp',{
+          /*  axios.post('http://localhost:8000/signUp',{
                 data: user
             }).then((data)=>{
 
-            })
+            })*/
+            this.props.history('/perfile')
         }else{
             this.messageError.innerHTML = 'Los campos marcados con * son obligatorios'
         }
@@ -50,6 +49,7 @@ class SignUp extends React.Component{
     }
 
     validarCampos(){
+        console.log("Metodo validar")
         let estado = true;
 
         if (this.state.username.length === 0) {
@@ -132,7 +132,7 @@ class SignUp extends React.Component{
         return(
           <>
               <div className="fondo-container">
-                  <form className="box position-absolute top-50 start-50 translate-middle">
+                  <form className="box2 position-absolute top-50 start-50 translate-middle">
                       <img src={icon} alt="icono usuario top-50"/>
                       <h1> Registrarse </h1>
                       <div className="mb-3">
@@ -159,7 +159,7 @@ class SignUp extends React.Component{
                               />
                               <br/>
                           </div>
-                          <button type="submit" value="Enviar" className="btn btn-primary d-grid" onClick={this.perfil.bind(this)}>
+                          <button type="button" value="Enviar" className="btn btn-primary d-grid" onClick={this.registrar.bind(this)}>
                               Registrar
                           </button>
                           <div className='{label-error}' ref={self => this.messageError = self}></div>
