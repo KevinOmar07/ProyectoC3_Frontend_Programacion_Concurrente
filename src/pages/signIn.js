@@ -49,8 +49,7 @@ class SignIn extends React.Component{
 
         return estado;
     }
-    perfil(){
-        //window.localStorage.setItem('user',dataRes.data.body[0].idUsuario);
+    iniciarSesion(){
         if (this.validarCampos()){
             axios.post('http://localhost:3001/login',{
                 data : {
@@ -99,7 +98,7 @@ class SignIn extends React.Component{
                         </div>
                         <br/>
                         <br/>
-                        <button type="button" className="btn btn-primary d-grid" onClick={this.perfil.bind(this)}>Iniciar sesión</button>
+                        <button type="button" className="btn btn-primary d-grid" onClick={this.iniciarSesion.bind(this)}>Iniciar sesión</button>
                         <p>¿No tienes cuenta? <a className="link-primary" onClick={this.signUp.bind(this)}>Registrarme</a></p>
                         <div className='label-error' ref={self => this.messageError = self}></div>
                     </form>
