@@ -3,19 +3,22 @@ import update from 'immutability-helper';
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import icon from "../img/icon-user.png";
+import swal from "sweetalert";
 
 class SignUp extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
             username: '',
-            password: '',
+            idPassword: '',
             confpassword: '',
+            aux: true,
 
         }
         this.status = false
         this.usernameOk = false
     };
+
 
     changeField(e) {
         let field = e.target.name
@@ -29,19 +32,23 @@ class SignUp extends React.Component{
     registrar(e){
         this.messageError.innerHTML = ''
         this.validarCampos()
-        if (this.status && this.usernameOk) {
-            let user = {
-                username: this.state.username,
-                password: this.state.password,
-                confpassword: this.state.confpassword
-            }
-          /*  axios.post('http://localhost:8000/signUp',{
-                data: user
-            }).then((data)=>{
+        const aux = this.validarPass()
+        if (this.status && aux) {
 
-            })*/
-            this.props.history('/perfile')
-        }else{
+            axios.post('http://localhost:3001/singup',{
+                data : {
+                    user: this.state.username,
+                    password: this.state.idPassword
+                }
+            }).then(dataRes => {
+                if (dataRes.data === 'usuario creado'){
+                    swal("Exito", dataRes.data, "success");
+                    this.props.history.push('/')
+                }else{
+                    swal("Error", dataRes.data, "error");
+                }
+            })
+        }else if (!this.status){
             this.messageError.innerHTML = 'Los campos marcados con * son obligatorios'
         }
         e.preventDefault()
@@ -49,121 +56,152 @@ class SignUp extends React.Component{
     }
 
     validarCampos(){
-        console.log("Metodo validar")
         let estado = true;
 
         if (this.state.username.length === 0) {
-            this.username.innerHTML = '* '
+            this.username.innerHTML = "*Usuario"
             estado = false;
         } else
-            this.username.innerHTML = ''
+            this.username.innerHTML = ""
 
-        if(this.state.password.length === 0){
-            this.password.innerHTML = '* '
+        if(this.state.idPassword.length === 0){
+            this.idPassword.innerHTML = "*Contraseña"
             estado = false;
         } else
-            this.password.innerHTML = ''
+            this.idPassword.innerHTML = ""
 
         if(this.state.confpassword.length === 0){
-            this.confpassword.innerHTML = '* '
+            this.confpassword.innerHTML = "*Confirmacion"
             estado = false;
         } else
-            this.confpassword.innerHTML = ''
-
-        if(!this.validarPass()){
-            this.password.innerHTML = '* '
-            estado = false;
-        }
+            this.confpassword.innerHTML = ""
 
         this.status = estado;
     }
 
-    validarPass(){
-        let contrasenia =this.state.password;
-        if (contrasenia.length >= 8){
-            var mayuscula = false;
-            var minuscula = false;
-            var caracter_raro = false;
-            var numero = false;
+    limpiar(){
+        if (this.state.idPassword.length <1 && this.state.confpassword.length < 1){
+            this.passwordSuccess.innerHTML = ''
+            this.confpassword.innerHTML = ''
+        } else if (this.state.idPassword.length >= 1 && this.state.confpassword.length >= 1) {
+            this.validarPass()
+        }
+    }
 
-            for (var i=0; i < contrasenia.length; i++){
-                if (contrasenia.charCodeAt(i) >= 65 && contrasenia.charCodeAt(i) <= 90 ){
-                    mayuscula = true;
+    validarPass(){
+        let contrasenia = this.state.idPassword;
+        if(contrasenia == this.state.confpassword){
+            this.confpassword.innerHTML = ""
+            if (contrasenia.length >= 8){
+                var mayuscula = false;
+                var minuscula = false;
+                var caracter_raro = false;
+                var numero = false;
+
+                for (var i=0; i < contrasenia.length; i++){
+                    if (contrasenia.charCodeAt(i) >= 65 && contrasenia.charCodeAt(i) <= 90 ){
+                        mayuscula = true;
+                    }
+                    else if(contrasenia.charCodeAt(i) >= 97 && contrasenia.charCodeAt(i) <= 122)
+                    {
+                        minuscula = true;
+                    }
+                    else if(contrasenia.charCodeAt(i) >= 48 && contrasenia.charCodeAt(i) <= 57) {
+                        numero = true;
+                    }
+                    else{
+                        caracter_raro = true;
+                    }
                 }
-                else if(contrasenia.charCodeAt(i) >= 97 && contrasenia.charCodeAt(i) <= 122)
-                {
-                    minuscula = true;
-                }
-                else if(contrasenia.charCodeAt(i) >= 48 && contrasenia.charCodeAt(i) <= 57) {
-                    numero = true;
-                }
-                else{
-                    caracter_raro = true;
-                }
+
                 if (mayuscula == true && minuscula == true && numero == false && caracter_raro == false){
                     this.passwordSuccess.innerHTML = 'Contraseña debil'
                     document.getElementById('labelSuccesPass').style.color = 'orange';
-                    this.validatePass = true;
                     return true
                 }
 
                 if (mayuscula == true && minuscula == true && numero == true && caracter_raro == false){
                     this.passwordSuccess.innerHTML = 'Contraseña normal'
                     document.getElementById('labelSuccesPass').style.color = 'goldenrod';
-                    this.validatePass = true;
                     return true
                 }
 
                 if(mayuscula == true && minuscula == true && caracter_raro == true && numero == true ) {
                     this.passwordSuccess.innerHTML = 'Contraseña Fuerte'
                     document.getElementById('labelSuccesPass').style.color = 'green';
-                    this.validatePass = true;
                     return true
                 }
+
+                if (mayuscula == true || minuscula == true || caracter_raro == true || numero == true ) {
+                    this.passwordSuccess.innerHTML = 'Contraseña vulnerable'
+                    document.getElementById('labelSuccesPass').style.color = 'red';
+                    return true
+                }
+            } else if (contrasenia.length > 0){
+                this.passwordSuccess.innerHTML = 'Contraseña de 8 o más caracteres'
+                document.getElementById('labelSuccesPass').style.color = 'red';
+                this.idPassword.innerHTML = ""
+                return false;
+            } else {
+                this.passwordSuccess.innerHTML = ''
+                return false;
             }
+        } else if (contrasenia.length > 0 && this.state.confpassword.length > 0){
+            this.confpassword.innerHTML = "Las contraseñas no coiciden"
+            this.passwordSuccess.innerHTML = ''
+            return false
+        } else {
+            this.confpassword.innerHTML = ""
+            return false
         }
 
-    }
-    perfil(){
-        this.props.history.push('/perfile')
     }
 
     render() {
         return(
           <>
               <div className="fondo-container">
-                  <form className="box2 position-absolute top-50 start-50 translate-middle">
+                  <form className="box2 position-absolute top-50 start-50 translate-middle" id="form">
                       <img src={icon} alt="icono usuario top-50"/>
-                      <h1> Registrarse </h1>
+                      <h1 className="p"> Registrarse </h1>
                       <div className="mb-3">
-                          <label > Nombre de usuario</label><br/>
+                          <label htmlFor="username"> Nombre de usuario</label><br/>
                           <input type="text" name="username" id="username"
                                  value={this.state.username}
-                                 onChange={this.changeField.bind(this)}/><br/>
-                          <div className="mb-3">
-                              <label > Contraseña</label><br/>
-                              <input type="password" name="password" id="password"
-                                     value={this.state.password}
-                                     onChange={this.changeField.bind(this)}
-                                     onBlur={this.validarPass.bind(this)}
-                              /><br/>
-                              <label className='label-error' ref={self=> this.password = self}></label>
-                              <label id='labelSuccesPass' ref={self=> this.passwordSuccess = self}></label>
-                          </div>
-                          <div className="mb-3">
-                              <label> Confirmar contraseña </label>
-                              <br/>
-                              <input type="password" name="confpassword" id="confpassword"
-                                    value={this.state.confpassword}
-                                     onChange={this.changeField.bind(this)}
-                              />
-                              <br/>
-                          </div>
-                          <button type="button" value="Enviar" className="btn btn-primary d-grid" onClick={this.registrar.bind(this)}>
-                              Registrar
-                          </button>
-                          <div className='{label-error}' ref={self => this.messageError = self}></div>
+                                 onChange={this.changeField.bind(this)}/>
+                                <label ref={self=> this.username = self}></label>
                       </div>
+                      <br/>
+                      <br/>
+                      <div className="mb-3">
+                          <label htmlFor='idPassword'> Contraseña</label><br/>
+                          <input type="password" name="idPassword" id="idPassword"
+                                 value={this.state.idPassword}
+                                 onChange={this.changeField.bind(this)}
+                                 onBlur={this.limpiar.bind(this)}
+                          />
+                          <label ref={self=> this.idPassword = self}></label>
+                          <label className='label-error' ref={self=> this.idPassword = self}></label>
+                          <label id='labelSuccesPass' ref={self=> this.passwordSuccess = self}></label>
+                      </div>
+                      <br/>
+                      <br/>
+                      <div className="mb-3">
+                          <label htmlFor="confpassword"> Confirmar contraseña </label>
+                          <br/>
+                          <input type="password" name="confpassword" id="confpassword"
+                                 value={this.state.confpassword}
+                                 onChange={this.changeField.bind(this)}
+                                 onBlur={this.validarPass.bind(this)}
+                          />
+                          <label ref={self=> this.confpassword = self}></label>
+                      </div>
+                      <br/>
+                      <br/>
+                      <button type="button" value="Enviar" className="btn btn-primary d-grid" onClick={this.registrar.bind(this)}>
+                          Registrar
+                      </button>
+                      <div className='label-error' ref={self => this.messageError = self}></div>
                   </form>
               </div >
           </>
