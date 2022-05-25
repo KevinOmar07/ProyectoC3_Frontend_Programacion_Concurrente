@@ -15,7 +15,7 @@ class HomePerfile extends React.Component{
         this.state = {
             username: window.localStorage.getItem("user"),
             idUser: window.localStorage.getItem("iduser"),
-            imagen: "https://res.cloudinary.com/drmqmmxnh/image/upload/v1647998873/Picsart_22-03-22_19-23-53-592_ah4iph.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+            imagen: "https://res.cloudinary.com/drmqmmxnh/image/upload/v1653446979/Abstract-41_dxpcxb.jpg",
             imagenes: []
         }
     }
@@ -79,7 +79,7 @@ class HomePerfile extends React.Component{
             await axios.post('http://localhost:3001/set_image2?id='+this.state.idUser,
                 formData
             ).then(data => {
-                if(data.data === "Recibido"){
+                if(data.data === "Imagenes Guardadas"){
                     this.obtenerFotos()
                     swal(data.data, "Imagenes subidas correctamente", "success");
 

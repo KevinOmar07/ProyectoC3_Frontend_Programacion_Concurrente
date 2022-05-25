@@ -117,24 +117,28 @@ class SignUp extends React.Component{
                 if (mayuscula == true && minuscula == true && numero == false && caracter_raro == false){
                     this.passwordSuccess.innerHTML = 'Contraseña debil'
                     document.getElementById('labelSuccesPass').style.color = 'orange';
+                    this.idPassword.innerHTML = ""
                     return true
                 }
 
                 if (mayuscula == true && minuscula == true && numero == true && caracter_raro == false){
                     this.passwordSuccess.innerHTML = 'Contraseña normal'
                     document.getElementById('labelSuccesPass').style.color = 'goldenrod';
+                    this.idPassword.innerHTML = ""
                     return true
                 }
 
                 if(mayuscula == true && minuscula == true && caracter_raro == true && numero == true ) {
                     this.passwordSuccess.innerHTML = 'Contraseña Fuerte'
                     document.getElementById('labelSuccesPass').style.color = 'green';
+                    this.idPassword.innerHTML = ""
                     return true
                 }
 
                 if (mayuscula == true || minuscula == true || caracter_raro == true || numero == true ) {
                     this.passwordSuccess.innerHTML = 'Contraseña vulnerable'
                     document.getElementById('labelSuccesPass').style.color = 'red';
+                    this.idPassword.innerHTML = ""
                     return true
                 }
             } else if (contrasenia.length > 0){
@@ -151,7 +155,6 @@ class SignUp extends React.Component{
             this.passwordSuccess.innerHTML = ''
             return false
         } else {
-            this.confpassword.innerHTML = ""
             return false
         }
 

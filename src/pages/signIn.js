@@ -57,14 +57,14 @@ class SignIn extends React.Component{
                     password: this.state.password
                 }
             }).then(dataRes => {
-                if (dataRes.data['status'] === 'Logueado'){
-                    swal(" ", "Incio de sesion correcto", "success");
+                if (dataRes.data['status'] === 'Inicio correcto'){
+                    swal(dataRes.data['status'], "Inicio de sesion correcto", "success");
                     window.localStorage.setItem('iduser', dataRes.data['id']);
                     window.localStorage.setItem('user', this.state.username);
                     window.localStorage.setItem('token', "eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJDb25jdXJyZW50ZSIsIlVzZXJuYW1lIjoiUmVhY3QuanMiLCJleHAiOjE2NDgwMTg5OTAsImlhdCI6MTY0ODAxODk5MH0.IreuNdC3bXm-hraaprcxDyxCjP3je-OXEtMw5zcLKBkuBeDhjKGu3S1HXTnqjJb5s9S34yvt9zQF8GoIL5Uoag");
                     this.props.history.push('/perfile')
                 }else{
-                    swal(dataRes.data['status'], "Incio de sesion Incorrecto", "error");
+                    swal(dataRes.data['status'], "Correo o contraseña incorrecto", "error");
                 }
             })
         } else {
